@@ -11,7 +11,7 @@ namespace Malvern
     public class Connection
     {
         private static readonly int malvernPort = 1022;
-        private static readonly string malvernServer = "108.52.240.107";
+        private static readonly string malvernServer = "localhost";  // local or remote address/IP of Malvern Server
         
         public static string SendTrans(string tcpRequest)
         {
