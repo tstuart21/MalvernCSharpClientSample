@@ -29,11 +29,17 @@ namespace Malvern
                     byte[] msg = Encoding.ASCII.GetBytes(tcpRequest);
                     int bytesSent = sender.Send(msg);
 
-                    while (tcpResponse.ToString().IndexOf("99,\"\"") == -1)
+                    while (tcpResponse.IndexOf("99,\"\"") == -1)
                     {
                         bytesRec = sender.Receive(bytes);
+                        if (bytesRec == 0)
+                        {
+                            // Server closed the connection before sending the 99,"" end-of-record
+                            // marker. Without this guard, Receive keeps returning 0 and the loop
+                            // spins forever (this is the classic "wrong port / server not ready" hang).
+                            throw new IOException("Connection closed by the server before the end-of-record marker (99,\"\") was received.");
+                        }
                         tcpResponse += Encoding.ASCII.GetString(bytes, 0, bytesRec);
-                        System.Threading.Thread.Sleep(3);
                     }
 
                     LogLine("Response: " + tcpResponse);
@@ -52,8 +58,8 @@ namespace Malvern
                 }
                 catch (Exception e)
                 {
-                    LogLine("SocketException: " + e.Message);
-                    return "SocketException: " + e.Message;
+                    LogLine("Exception: " + e.Message);
+                    return "Exception: " + e.Message;
                 }
             }
             catch (Exception e)
