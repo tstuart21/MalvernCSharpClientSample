@@ -63,9 +63,9 @@ Each request is printed before it is sent; press **Enter** to send it and see th
 
 Detailed integration docs are in the Malvern customer portal:
 
-- **TCP Integration Overview** — `/help/tcp-integration`
-- **Building a Transaction** — `/help/tcp-integration/building-a-transaction`
-- **Transaction Examples** — `/help/tcp-integration/examples`
-- **TCP Field Reference** — `/help/api-reference/fields`
+- **TCP Integration Overview** — <https://www.malvernsys.com/help/tcp-integration>
+- **Building a Transaction** — <https://www.malvernsys.com/help/tcp-integration/building-a-transaction>
+- **Transaction Examples** — <https://www.malvernsys.com/help/tcp-integration/examples>
+- **TCP Field Reference** — <https://www.malvernsys.com/help/api-reference/fields>
 
 Contact your Malvern technician or call (800) 296-9642 for portal access or help getting started.
